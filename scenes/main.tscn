@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4lkkkl2v1ayr"]
+
+[ext_resource type="Script" uid="uid://bh7sgbd1teml3" path="res://scripts/main.gd" id="1_0wfyh"]
+[ext_resource type="Texture2D" uid="uid://cdl8r0n2tph7o" path="res://assets/enemy_chochinobake.png" id="4_tefeu"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_0wfyh")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_left = 1760.0
+offset_top = 7.0
+offset_right = 1875.0
+offset_bottom = 122.0
+scale = Vector2(1.3199999, 1.3199999)
+texture_normal = ExtResource("4_tefeu")
+
+[connection signal="button_up" from="TextureButton" to="." method="_on_texture_button_button_up"]
