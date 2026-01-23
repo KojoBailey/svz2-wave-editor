@@ -18,9 +18,4 @@ offset_top = 20.0
 offset_right = 60.0
 offset_bottom = 60.0
 
-[node name="WaveList" type="HBoxContainer" parent="."]
-offset_left = 20.0
-offset_top = 1020.0
-offset_right = 20.0
-offset_bottom = 1020.0
-grow_vertical = 0
+[node name="WaveList" type="Node2D" parent="."]
