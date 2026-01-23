@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdl8r0n2tph7o"
-path="res://.godot/imported/enemy_chochinobake.png-e1c209c1c423789025b6271c79af5089.ctex"
+uid="uid://bfdv4peipc14i"
+path="res://.godot/imported/enemy_zombie_archer.png-08e170cda3aabb5707cccff2bd20fe7e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enemy_chochinobake.png"
-dest_files=["res://.godot/imported/enemy_chochinobake.png-e1c209c1c423789025b6271c79af5089.ctex"]
+source_file="res://assets/enemy_icons/enemy_zombie_archer.png"
+dest_files=["res://.godot/imported/enemy_zombie_archer.png-08e170cda3aabb5707cccff2bd20fe7e.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfdv4peipc14i"
-path="res://.godot/imported/enemy_zombie_archer.png-419626650067ad34a44710e0cbea8718.ctex"
+uid="uid://cwtaja1eundk6"
+path="res://.godot/imported/enemy_zombie_spearman.png-b86f035180439c2ec093c90e97eff6f8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enemy_zombie_archer.png"
-dest_files=["res://.godot/imported/enemy_zombie_archer.png-419626650067ad34a44710e0cbea8718.ctex"]
+source_file="res://assets/enemy_icons/enemy_zombie_spearman.png"
+dest_files=["res://.godot/imported/enemy_zombie_spearman.png-b86f035180439c2ec093c90e97eff6f8.ctex"]
 
 [params]
 

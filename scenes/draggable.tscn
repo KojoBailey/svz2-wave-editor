@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ce4rerxdimgb7"]
 
 [ext_resource type="Script" uid="uid://cnb662cc2s114" path="res://scripts/draggable.gd" id="1_15mg1"]
-[ext_resource type="Texture2D" uid="uid://bxwvhjycqh1p7" path="res://assets/enemy_crawling_torso.png" id="2_ahypq"]
+[ext_resource type="Texture2D" uid="uid://bxwvhjycqh1p7" path="res://assets/enemy_icons/enemy_crawling_torso.png" id="2_ahypq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jyhfs"]
 size = Vector2(97, 98)

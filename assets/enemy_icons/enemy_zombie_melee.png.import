@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cirtujt0ilwkd"
-path="res://.godot/imported/enemy_zombie_melee.png-a41b2809f26e7d539b4670dad16794ea.ctex"
+path="res://.godot/imported/enemy_zombie_melee.png-53a8a77d7cb52cc888ee817b0b6eb249.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enemy_zombie_melee.png"
-dest_files=["res://.godot/imported/enemy_zombie_melee.png-a41b2809f26e7d539b4670dad16794ea.ctex"]
+source_file="res://assets/enemy_icons/enemy_zombie_melee.png"
+dest_files=["res://.godot/imported/enemy_zombie_melee.png-53a8a77d7cb52cc888ee817b0b6eb249.ctex"]
 
 [params]
 
