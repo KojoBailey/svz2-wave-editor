@@ -11,7 +11,7 @@ const enemy_buttons_scale: float = 1.5
 var list_element_scene = preload("res://scenes/list_element.tscn")
 var list_element_size: Vector2
 const wave_list_scale: float = 1.2
-const wave_list_spacing: float = 20
+const wave_list_spacing: float = 10
 var list_element_total_width: float
 var wave_list: Array[TextureButton]
 
@@ -64,7 +64,7 @@ func place_list_item(texture: Texture2D, drop_x: float):
 	
 	if wave_list.size() >= 4:
 		for item in wave_list.slice(2):
-			item.position.x += calculate_list_x(1)
+			item.position.x += list_element_total_width
 		list_element.position.x = calculate_list_x(2)
 		wave_list.insert(2, list_element)
 	else:
