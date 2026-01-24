@@ -29,18 +29,23 @@ func _ready() -> void:
 	list_element_total_width = (list_element_size.x + wave_list_spacing) * wave_list_scale
 
 func _process(_delta: float) -> void:
-	if enemy_in_hand != null:
-		enemy_in_hand.position = get_global_mouse_position()
-		var index = calculate_list_index(enemy_in_hand.position.x)
+	handle_enemy_dragging()
+
+func handle_enemy_dragging():
+	if enemy_in_hand == null: return
 		
-		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-			if previous_hand_index != index:
-				set_list_positions(index)
-			previous_hand_index = index
-		else:
-			place_list_item(enemy_in_hand.texture, index)
-			enemy_in_hand.queue_free()
-			enemy_in_hand = null
+	enemy_in_hand.position = get_global_mouse_position()
+	var index = calculate_list_index(enemy_in_hand.position.x)
+	enemy_in_hand.position -= list_element_size / 2
+	
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		if previous_hand_index != index:
+			set_list_positions(index)
+		previous_hand_index = index
+	else:
+		place_list_item(enemy_in_hand.texture, index)
+		enemy_in_hand.queue_free()
+		enemy_in_hand = null
 
 func create_button(texture: Texture2D) -> void:
 	var enemy_button = enemy_button_scene.instantiate() as TextureButton
