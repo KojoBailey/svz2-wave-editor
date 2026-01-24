@@ -62,11 +62,12 @@ func place_list_item(texture: Texture2D, drop_x: float):
 	list_element.position.y = 1080 - margins.y - list_element.size.y
 	$WaveList.add_child(list_element)
 	
-	if wave_list.size() >= 4:
-		for item in wave_list.slice(2):
+	if not wave_list.is_empty():
+		var index = calculate_list_index(drop_x)
+		for item in wave_list.slice(index):
 			item.position.x += list_element_total_width
-		list_element.position.x = calculate_list_x(2)
-		wave_list.insert(2, list_element)
+		list_element.position.x = calculate_list_x(index)
+		wave_list.insert(index, list_element)
 	else:
 		wave_list.push_back(list_element)
 
