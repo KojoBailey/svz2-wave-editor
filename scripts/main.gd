@@ -16,9 +16,10 @@ var previous_hand_index: int
 func _ready() -> void:
 	enemy_buttons = $EnemyButtons
 	enemy_buttons.scale = Vector2(enemy_buttons_scale, enemy_buttons_scale)
-
 	for texture in enemy_list:
 		create_button(texture)
+		
+	previous_hand_index = -1
 	
 	wave_list = $WaveList
 	wave_list.position = Vector2(margins.x, 1080 - margins.y)
@@ -37,11 +38,13 @@ func handle_enemy_dragging() -> void:
 		if previous_hand_index != index:
 			wave_list.set_positions(index)
 		previous_hand_index = index
+		wave_list.show_item_preview(true)
 	else:
 		wave_list.place_item(enemy_in_hand.texture, index)
 		previous_hand_index = -1
 		enemy_in_hand.queue_free()
 		enemy_in_hand = null
+		wave_list.show_item_preview(false)
 
 func create_button(texture: Texture2D) -> void:
 	var enemy_button := enemy_button_scene.instantiate() as TextureButton
