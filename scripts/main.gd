@@ -4,11 +4,11 @@ extends Node2D
 
 const margins = Vector2i(20, 40)
 
-var enemy_button_scene = preload("res://scenes/enemy_button.tscn")
+var enemy_button_scene := preload("res://scenes/enemy_button.tscn")
 var enemy_buttons: HBoxContainer
 const enemy_buttons_scale: float = 1.5
 
-var list_element_scene = preload("res://scenes/list_element.tscn")
+var list_element_scene := preload("res://scenes/list_element.tscn")
 var list_element_size: Vector2
 const wave_list_scale: float = 1.2
 const wave_list_spacing: float = 10
@@ -31,11 +31,11 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	handle_enemy_dragging()
 
-func handle_enemy_dragging():
+func handle_enemy_dragging() -> void:
 	if enemy_in_hand == null: return
 		
 	enemy_in_hand.position = get_global_mouse_position()
-	var index = calculate_list_index(enemy_in_hand.position.x)
+	var index: int = calculate_list_index(enemy_in_hand.position.x)
 	enemy_in_hand.position -= list_element_size / 2
 	
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
@@ -48,7 +48,11 @@ func handle_enemy_dragging():
 		enemy_in_hand = null
 
 func create_button(texture: Texture2D) -> void:
-	var enemy_button = enemy_button_scene.instantiate() as TextureButton
+	var enemy_button := enemy_button_scene.instantiate() as TextureButton
+	if enemy_button == null:
+		push_error("Failed to cast enemy_button to TextureButton.")
+		return
+	
 	enemy_button.texture_normal = texture
 	enemy_button.button_down.connect(_on_enemy_button_down.bind(enemy_button))
 	enemy_buttons.add_child(enemy_button)
@@ -60,8 +64,8 @@ func _on_enemy_button_down(button: TextureButton) -> void:
 	enemy_in_hand.scale = Vector2(wave_list_scale, wave_list_scale)
 	self.add_child(enemy_in_hand)
 
-func place_list_item(texture: Texture2D, index: int):
-	var list_element = list_element_scene.instantiate() as TextureButton
+func place_list_item(texture: Texture2D, index: int) -> void:
+	var list_element := list_element_scene.instantiate() as TextureButton
 	list_element.texture_normal = texture
 	list_element.scale = Vector2(wave_list_scale, wave_list_scale)
 	list_element.position.x = calculate_list_x(wave_list.size())
@@ -83,7 +87,7 @@ func calculate_list_index(x: float) -> int:
 func calculate_list_x(index: int) -> float:
 	return index * list_element_total_width + margins.x
 
-func set_list_positions(index: int):
+func set_list_positions(index: int) -> void:
 	var i: int = 0
 	for item in wave_list:
 		if i >= index:
