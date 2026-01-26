@@ -92,28 +92,26 @@ func place_item(texture: Texture2D, index: int) -> void:
 	var element: TextureButton = instantiate_item()
 	element.texture_normal = texture
 	element.scale = Vector2(1, 1)
-	element.position.y = -element.size.y
+	element.position = Vector2(calculate_local_x(index), -element.size.y)
 	add_child(element)
 	element.button_down.connect(_on_item_button_down.bind(element))
 	list.insert(index, element)
 	reset_positions()
 	
 func set_positions(index: int) -> void:
-	var i: int = 0
-	for item in list:
-		if i >= index:
-			item.position.x = calculate_local_x(i + 1)
-		else:
-			item.position.x = calculate_local_x(i)
-		i += 1
+	for i in range(list.size()):
+		create_item_tween(list[i], calculate_local_x(i + 1 if i >= index else i))
 	
 	preview.position.x = calculate_local_x(index)
 
 func reset_positions() -> void:
-	var i: int = 0
-	for item in list:
-		item.position.x = calculate_local_x(i)
-		i += 1
+	for i in range(list.size()):
+		create_item_tween(list[i], calculate_local_x(i))
+			
+func create_item_tween(item: TextureButton, target_x: float) -> PropertyTweener:
+	return create_tween().tween_property(item, "position:x", target_x, 0.15) \
+		.set_trans(Tween.TRANS_QUAD) \
+		.set_ease(Tween.EASE_OUT)
 
 func calculate_index(local_x: float) -> int:
 	var absolute_index: int = max(0, floor(local_x / item_total_width))
