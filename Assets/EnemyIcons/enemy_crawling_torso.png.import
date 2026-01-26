@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfdv4peipc14i"
-path="res://.godot/imported/enemy_zombie_archer.png-08e170cda3aabb5707cccff2bd20fe7e.ctex"
+uid="uid://bxwvhjycqh1p7"
+path="res://.godot/imported/enemy_crawling_torso.png-0b240ffd4b6af2d4388acfd28b1baa9c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enemy_icons/enemy_zombie_archer.png"
-dest_files=["res://.godot/imported/enemy_zombie_archer.png-08e170cda3aabb5707cccff2bd20fe7e.ctex"]
+source_file="res://Assets/EnemyIcons/enemy_crawling_torso.png"
+dest_files=["res://.godot/imported/enemy_crawling_torso.png-0b240ffd4b6af2d4388acfd28b1baa9c.ctex"]
 
 [params]
 

@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bmu0mdie5hfxj"]
+
+[ext_resource type="Script" uid="uid://car5i57n8wljx" path="res://Elements/ScrollBar/scrollbar.gd" id="1_3006j"]
+
+[node name="ScrollBar" type="Node2D" unique_id=1837953302]
+script = ExtResource("1_3006j")
+
+[node name="Back" type="ColorRect" parent="." unique_id=1144394188]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 0.20392157)
+
+[node name="Front" type="ColorRect" parent="." unique_id=123837879]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 0.2627451)
+
+[connection signal="gui_input" from="Front" to="." method="_on_front_gui_input"]

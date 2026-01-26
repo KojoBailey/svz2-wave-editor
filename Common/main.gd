@@ -7,7 +7,7 @@ const margins := Vector2i(20, 40)
 
 var wave_list: WaveList
 
-var enemy_button_scene := preload("res://scenes/enemy_button.tscn")
+var enemy_button_scene := preload("res://Elements/EnemyButtons/enemy_button.tscn")
 var enemy_buttons: HBoxContainer
 const enemy_buttons_scale: float = 1.5
 
@@ -21,7 +21,6 @@ func _ready() -> void:
 	enemy_buttons.scale = Vector2(enemy_buttons_scale, enemy_buttons_scale)
 	for texture in enemy_list:
 		create_button(texture)
-		wave_list.place_item(texture, 0)  # [TESTING]
 		
 func _on_enemy_button_down(button: TextureButton) -> void:
 	wave_list.create_drag_item(button.texture_normal)

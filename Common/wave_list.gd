@@ -7,9 +7,11 @@ const item_scale_vec2 := Vector2(item_scale, item_scale)
 const preview_scale: float = 0.7
 const spacing: float = 10
 
+var items: Node2D
 var preview: ColorRect
+var scroll_bar: Node2D
 
-var item_scene := preload("res://scenes/list_element.tscn")
+var item_scene := preload("res://Elements/WaveList/list_element.tscn")
 var item_size: Vector2
 var item_total_width: float
 var list: Array[TextureButton]
@@ -20,23 +22,30 @@ var hand_index: int
 var previous_hand_index: int
 
 func _ready() -> void:
-	scale = item_scale_vec2
-	
 	var element: TextureButton = instantiate_item()
 	item_size = element.size
 	item_total_width = item_size.x + spacing
 	
+	items = $Items
+	items.scale = item_scale_vec2
+	
 	initialize_preview()
+	
+	scroll_bar = $ScrollBar
+	scroll_bar.set_width(1880)  # [TODO] Make not hard-coded.
 	
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		handle_dragging()
+		
+func _process(_delta: float) -> void:
+	items.position.x = (list.size() * item_total_width * item_scale - scroll_bar.width) * -scroll_bar.get_percent()
 	
 func _on_item_button_down(item: TextureButton) -> void:
 	var index: int = calculate_index(item.position.x)
 	list.remove_at(index)
 	create_drag_item(item.texture_normal)
-	remove_child(item)
+	items.remove_child(item)
 	item.queue_free()
 
 func on_drag_index_change() -> void:
@@ -57,7 +66,7 @@ func instantiate_item() -> TextureButton:
 	return result
 
 func initialize_preview() -> void:
-	preview = $Preview
+	preview = $Items/Preview
 	preview.size = Vector2(item_size.y, item_size.y)
 	preview.pivot_offset = preview.size / 2 # centre anchor
 	preview.scale = Vector2(preview_scale, preview_scale)
@@ -93,10 +102,11 @@ func place_item(texture: Texture2D, index: int) -> void:
 	element.texture_normal = texture
 	element.scale = Vector2(1, 1)
 	element.position = Vector2(calculate_local_x(index), -element.size.y)
-	add_child(element)
+	items.add_child(element)
 	element.button_down.connect(_on_item_button_down.bind(element))
 	list.insert(index, element)
 	reset_positions()
+	scroll_bar.set_data_width(list.size() * item_total_width)
 	
 func set_positions(index: int) -> void:
 	for i in range(list.size()):
@@ -114,8 +124,7 @@ func create_item_tween(item: TextureButton, target_x: float) -> PropertyTweener:
 		.set_ease(Tween.EASE_OUT)
 
 func calculate_index(local_x: float) -> int:
-	var absolute_index: int = max(0, floor(local_x / item_total_width))
-	return min(absolute_index, list.size())
+	return clamp(floor(local_x / item_total_width), 0, list.size())
 
 func calculate_local_x(index: int) -> float:
 	return index * item_total_width

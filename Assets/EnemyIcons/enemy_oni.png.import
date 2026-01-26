@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxwvhjycqh1p7"
-path="res://.godot/imported/enemy_crawling_torso.png-3b597555a2917a5a052cdda030b91c25.ctex"
+uid="uid://co8q2b4jl6ewc"
+path="res://.godot/imported/enemy_oni.png-58223aa08ed6d7327ed74c0361a5b783.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enemy_icons/enemy_crawling_torso.png"
-dest_files=["res://.godot/imported/enemy_crawling_torso.png-3b597555a2917a5a052cdda030b91c25.ctex"]
+source_file="res://Assets/EnemyIcons/enemy_oni.png"
+dest_files=["res://.godot/imported/enemy_oni.png-58223aa08ed6d7327ed74c0361a5b783.ctex"]
 
 [params]
 

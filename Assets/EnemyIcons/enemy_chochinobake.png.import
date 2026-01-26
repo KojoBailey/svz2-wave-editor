@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwtaja1eundk6"
-path="res://.godot/imported/enemy_zombie_spearman.png-b86f035180439c2ec093c90e97eff6f8.ctex"
+uid="uid://cdl8r0n2tph7o"
+path="res://.godot/imported/enemy_chochinobake.png-5cdcf064a73f49d22af6c50118f8f246.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enemy_icons/enemy_zombie_spearman.png"
-dest_files=["res://.godot/imported/enemy_zombie_spearman.png-b86f035180439c2ec093c90e97eff6f8.ctex"]
+source_file="res://Assets/EnemyIcons/enemy_chochinobake.png"
+dest_files=["res://.godot/imported/enemy_chochinobake.png-5cdcf064a73f49d22af6c50118f8f246.ctex"]
 
 [params]
 

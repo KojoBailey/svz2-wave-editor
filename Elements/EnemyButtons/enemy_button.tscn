@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://dfc78xyjg8bo0"]
+[gd_scene format=3 uid="uid://dfc78xyjg8bo0"]
 
-[ext_resource type="Texture2D" uid="uid://cdl8r0n2tph7o" path="res://assets/enemy_icons/enemy_chochinobake.png" id="1_0ajkp"]
+[ext_resource type="Texture2D" uid="uid://cdl8r0n2tph7o" path="res://Assets/EnemyIcons/enemy_chochinobake.png" id="1_0ajkp"]
 
 [node name="EnemyButton" type="TextureButton"]
 offset_left = 1760.0
