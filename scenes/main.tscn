@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cwtaja1eundk6" path="res://assets/enemy_icons/enemy_zombie_spearman.png" id="5_choun"]
 [ext_resource type="Texture2D" uid="uid://cdl8r0n2tph7o" path="res://assets/enemy_icons/enemy_chochinobake.png" id="6_ya4ey"]
 [ext_resource type="Texture2D" uid="uid://co8q2b4jl6ewc" path="res://assets/enemy_icons/enemy_oni.png" id="7_eb6dy"]
-[ext_resource type="Script" uid="uid://b266xxtixa5tc" path="res://scenes/wave_list.gd" id="8_tipki"]
+[ext_resource type="Script" uid="uid://b266xxtixa5tc" path="res://scripts/wave_list.gd" id="8_tipki"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_0wfyh")
@@ -23,7 +23,7 @@ offset_bottom = 60.0
 script = ExtResource("8_tipki")
 metadata/_custom_type_script = "uid://b266xxtixa5tc"
 
-[node name="ColorRect" type="ColorRect" parent="WaveList"]
+[node name="Preview" type="ColorRect" parent="WaveList"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
