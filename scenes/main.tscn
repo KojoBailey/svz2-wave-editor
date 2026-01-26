@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c4lkkkl2v1ayr"]
+[gd_scene format=3 uid="uid://c4lkkkl2v1ayr"]
 
 [ext_resource type="Script" uid="uid://bh7sgbd1teml3" path="res://scripts/main.gd" id="1_0wfyh"]
 [ext_resource type="Texture2D" uid="uid://bxwvhjycqh1p7" path="res://assets/enemy_icons/enemy_crawling_torso.png" id="2_o6xl0"]
@@ -9,21 +9,21 @@
 [ext_resource type="Texture2D" uid="uid://co8q2b4jl6ewc" path="res://assets/enemy_icons/enemy_oni.png" id="7_eb6dy"]
 [ext_resource type="Script" uid="uid://b266xxtixa5tc" path="res://scripts/wave_list.gd" id="8_tipki"]
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" unique_id=1617144603]
 script = ExtResource("1_0wfyh")
 enemy_list = Array[Texture2D]([ExtResource("2_o6xl0"), ExtResource("3_tipki"), ExtResource("4_85g3d"), ExtResource("5_choun"), ExtResource("6_ya4ey"), ExtResource("7_eb6dy")])
 
-[node name="EnemyButtons" type="HBoxContainer" parent="."]
+[node name="EnemyButtons" type="HBoxContainer" parent="." unique_id=1919441721]
 offset_left = 20.0
 offset_top = 20.0
 offset_right = 60.0
 offset_bottom = 60.0
 
-[node name="WaveList" type="Node2D" parent="."]
+[node name="WaveList" type="Node2D" parent="." unique_id=1532360385]
 script = ExtResource("8_tipki")
 metadata/_custom_type_script = "uid://b266xxtixa5tc"
 
-[node name="Preview" type="ColorRect" parent="WaveList"]
+[node name="Preview" type="ColorRect" parent="WaveList" unique_id=1161218902]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

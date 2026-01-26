@@ -28,14 +28,16 @@ func _ready() -> void:
 	
 	initialize_preview()
 	
-func _process(_delta: float) -> void:
-	handle_dragging()
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseMotion:
+		handle_dragging()
 	
 func _on_item_button_down(item: TextureButton) -> void:
 	var index: int = calculate_index(item.position.x)
-	create_drag_item(item.texture_normal)
 	list.remove_at(index)
+	create_drag_item(item.texture_normal)
 	remove_child(item)
+	item.queue_free()
 
 func on_drag_index_change() -> void:
 	set_positions(hand_index)
@@ -66,8 +68,8 @@ func handle_dragging() -> void:
 	if not is_dragging_item: return
 	
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		item_in_hand.global_position = get_global_mouse_position()
-		hand_index = calculate_index(item_in_hand.global_position.x)
+		item_in_hand.position = get_local_mouse_position()
+		hand_index = calculate_index(item_in_hand.position.x)
 		item_in_hand.global_position -= item_size / 2  # purely visual
 	
 		if previous_hand_index != hand_index:
@@ -84,6 +86,7 @@ func create_drag_item(texture: Texture2D) -> void:
 	previous_hand_index = -1
 	add_child(item_in_hand)
 	is_dragging_item = true
+	handle_dragging()
 
 func place_item(texture: Texture2D, index: int) -> void:
 	var element: TextureButton = instantiate_item()
@@ -99,24 +102,25 @@ func set_positions(index: int) -> void:
 	var i: int = 0
 	for item in list:
 		if i >= index:
-			item.position.x = calculate_x(i + 1)
+			item.position.x = calculate_local_x(i + 1)
 		else:
-			item.position.x = calculate_x(i)
+			item.position.x = calculate_local_x(i)
 		i += 1
 	
-	preview.position.x = calculate_x(index)
+	preview.position.x = calculate_local_x(index)
 
 func reset_positions() -> void:
 	var i: int = 0
 	for item in list:
-		item.position.x = calculate_x(i)
+		item.position.x = calculate_local_x(i)
 		i += 1
 
-func calculate_index(x: float) -> int:
-	return min(max(0, floor((x - position.x) / (item_total_width * scale.x))), list.size())
+func calculate_index(local_x: float) -> int:
+	var absolute_index: int = max(0, floor(local_x / item_total_width))
+	return min(absolute_index, list.size())
 
-func calculate_x(index: int) -> float:
-	return index * item_total_width + position.x
+func calculate_local_x(index: int) -> float:
+	return index * item_total_width
 
 func show_item_preview(_show: bool) -> void:
 	preview.visible = _show
