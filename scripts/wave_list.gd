@@ -70,7 +70,7 @@ func handle_dragging() -> void:
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		item_in_hand.position = get_local_mouse_position()
 		hand_index = calculate_index(item_in_hand.position.x)
-		item_in_hand.global_position -= item_size / 2  # purely visual
+		item_in_hand.position -= item_size / 2  # purely visual
 	
 		if previous_hand_index != hand_index:
 			on_drag_index_change()
@@ -81,7 +81,7 @@ func create_drag_item(texture: Texture2D) -> void:
 	item_in_hand = Sprite2D.new()
 	item_in_hand.centered = false
 	item_in_hand.texture = texture
-	item_in_hand.scale = item_scale_vec2
+	item_in_hand.scale = Vector2(1, 1)
 	reset_positions()
 	previous_hand_index = -1
 	add_child(item_in_hand)
