@@ -16,6 +16,7 @@ func _ready() -> void:
 	
 	wave_list = $WaveList
 	wave_list.position = Vector2(margins.x, dimensions.y - margins.y)
+	wave_list.assign_scroll_bar($ScrollBar)
 	
 	enemy_buttons = $EnemyButtons
 	enemy_buttons.scale = Vector2(enemy_buttons_scale, enemy_buttons_scale)

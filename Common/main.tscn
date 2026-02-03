@@ -41,4 +41,4 @@ grow_vertical = 2
 pivot_offset = Vector2(20, 20)
 color = Color(0.7641318, 0.8673147, 1, 0.30588236)
 
-[node name="ScrollBar" parent="WaveList" unique_id=747131987 instance=ExtResource("9_s46iy")]
+[node name="ScrollBar" parent="." unique_id=747131987 instance=ExtResource("9_s46iy")]

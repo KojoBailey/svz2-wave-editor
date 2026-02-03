@@ -2,7 +2,7 @@ extends Node2D
 
 class_name WaveList
 
-const item_scale: float = 1.2
+const item_scale: float = 1
 const item_scale_vec2 := Vector2(item_scale, item_scale)
 const preview_scale: float = 0.7
 const spacing: float = 10
@@ -30,16 +30,18 @@ func _ready() -> void:
 	items.scale = item_scale_vec2
 	
 	initialize_preview()
-	
-	scroll_bar = $ScrollBar
+
+func assign_scroll_bar(_scroll_bar: Node2D) -> void:
+	scroll_bar = _scroll_bar
+	scroll_bar.position = self.position
 	scroll_bar.set_width(1880)  # [TODO] Make not hard-coded.
-	
+
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		handle_dragging()
 		
 func _process(_delta: float) -> void:
-	items.position.x = (list.size() * item_total_width * item_scale - scroll_bar.width) * -scroll_bar.get_percent()
+	self.position.x = (list.size() * item_total_width * item_scale - scroll_bar.width) * -scroll_bar.get_percent()
 	
 func _on_item_button_down(item: TextureButton) -> void:
 	var index: int = calculate_index(item.position.x)
@@ -78,6 +80,7 @@ func handle_dragging() -> void:
 	
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		item_in_hand.position = get_local_mouse_position()
+		print(get_local_mouse_position())
 		hand_index = calculate_index(item_in_hand.position.x)
 		item_in_hand.position -= item_size / 2  # purely visual
 	
