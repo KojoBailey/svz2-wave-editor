@@ -2,7 +2,7 @@ extends Node2D
 
 class_name WaveList
 
-const item_scale: float = 1
+const item_scale: float = 1.2
 const item_scale_vec2 := Vector2(item_scale, item_scale)
 const preview_scale: float = 0.7
 const spacing: float = 10
@@ -27,7 +27,7 @@ func _ready() -> void:
 	item_total_width = item_size.x + spacing
 	
 	items = $Items
-	items.scale = item_scale_vec2
+	self.scale = item_scale_vec2
 	
 	initialize_preview()
 
