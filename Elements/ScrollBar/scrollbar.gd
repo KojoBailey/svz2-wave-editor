@@ -3,6 +3,7 @@ extends Node2D
 const height: float = 30
 
 var width: float
+var child_scale: float
 var data_width: float
 
 var back: ColorRect
@@ -21,8 +22,11 @@ func set_width(new_width: float) -> void:
 	if width >= data_width:
 		set_data_width(0)
 
+func set_child_scale(_scale: float) -> void:
+	child_scale = _scale
+
 func set_data_width(new_data_width: float) -> void:
-	data_width = new_data_width
+	data_width = new_data_width * child_scale
 	front.size.x = width / data_width * width if data_width > width else width
 
 func _on_front_gui_input(event: InputEvent) -> void:

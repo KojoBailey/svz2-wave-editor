@@ -32,6 +32,7 @@ func _ready() -> void:
 func assign_scroll_bar(_scroll_bar: Node2D) -> void:
 	scroll_bar = _scroll_bar
 	scroll_bar.position = self.position
+	scroll_bar.set_child_scale(item_scale)
 	scroll_bar.set_width(1880)  # [TODO] Make not hard-coded.
 
 func _input(event: InputEvent) -> void:
