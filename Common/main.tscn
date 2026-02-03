@@ -24,9 +24,7 @@ offset_bottom = 60.0
 script = ExtResource("8_n5iy0")
 metadata/_custom_type_script = "uid://b266xxtixa5tc"
 
-[node name="Items" type="Node2D" parent="WaveList" unique_id=1549283922]
-
-[node name="Preview" type="ColorRect" parent="WaveList/Items" unique_id=1161218902]
+[node name="Preview" type="ColorRect" parent="WaveList" unique_id=1161218902]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

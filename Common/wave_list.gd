@@ -7,7 +7,6 @@ const item_scale_vec2 := Vector2(item_scale, item_scale)
 const preview_scale: float = 0.7
 const spacing: float = 10
 
-var items: Node2D
 var preview: ColorRect
 var scroll_bar: Node2D
 
@@ -26,7 +25,6 @@ func _ready() -> void:
 	item_size = element.size
 	item_total_width = item_size.x + spacing
 	
-	items = $Items
 	self.scale = item_scale_vec2
 	
 	initialize_preview()
@@ -47,7 +45,7 @@ func _on_item_button_down(item: TextureButton) -> void:
 	var index: int = calculate_index(item.position.x)
 	list.remove_at(index)
 	create_drag_item(item.texture_normal)
-	items.remove_child(item)
+	self.remove_child(item)
 	item.queue_free()
 
 func on_drag_index_change() -> void:
@@ -68,7 +66,7 @@ func instantiate_item() -> TextureButton:
 	return result
 
 func initialize_preview() -> void:
-	preview = $Items/Preview
+	preview = $Preview
 	preview.size = Vector2(item_size.y, item_size.y)
 	preview.pivot_offset = preview.size / 2 # centre anchor
 	preview.scale = Vector2(preview_scale, preview_scale)
@@ -105,7 +103,7 @@ func place_item(texture: Texture2D, index: int) -> void:
 	element.texture_normal = texture
 	element.scale = Vector2(1, 1)
 	element.position = Vector2(calculate_local_x(index), -element.size.y)
-	items.add_child(element)
+	self.add_child(element)
 	element.button_down.connect(_on_item_button_down.bind(element))
 	list.insert(index, element)
 	reset_positions()
